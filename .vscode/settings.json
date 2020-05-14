@@ -1,6 +1,0 @@
-{
-    "todo-tree.filtering.ignoreGitSubmodules": true,
-    "todo-tree.general.enableFileWatcher": true,
-    "todo-tree.general.statusBar": "total",
-    "todo-tree.tree.scanMode": "workspace"
-}
