@@ -19,5 +19,5 @@
 # 4. 数据库
 1.  mysql：active
 # 5. 项目学习
-    1.  open-capacity-platform
-        1.  项目搭建：active
+1.  open-capacity-platform
+    1.  项目搭建：active
