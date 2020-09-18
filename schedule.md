@@ -1,23 +1,54 @@
-# 1. python
-1.  flask
-    1.  上下文：complete, merge
-2.  sanic
-3.  superset
-    1.  superset-init：complete, merged
-    2.  superset-load-example：active
-# 2. 前端
-1. react
-   1. hooks(2020年7月5日 publish)
-   2. render props(2020年7月5日 pause)
-   3. redux(2020年7月6日 active)
-   4. react-redux(2020年7月6日 active)
-   5. umi
-# 3. 并发
-1.  nio
-    1.  缓冲区：complete, not merge
-    2.  通道：active
-# 4. 数据库
-1.  mysql：active
-# 5. 项目学习
-1.  open-capacity-platform
-    1.  项目搭建：active
+- [状态说明](#状态说明)
+- [`git`](#git)
+- [`python`](#python)
+- [前端](#前端)
+- [并发](#并发)
+- [数据库](#数据库)
+- [书](#书)
+- [项目学习](#项目学习)
+# 状态说明
+1. `pause`: 已暂停
+2. `postpone`: 延期
+3. `in progress`: 进行中
+4. `future`: 未来的计划
+5. `need supplement`: 大体完成, 需要补充
+6. `postpone supplement`: 大体完成, 暂时不补充
+7. `complete`: 已经完成
+# `git`
+|序号|文件夹或文件名|状态|简述|下一步计划|当前时间|下一步计划完成时间|总计划|总完成时间
+|:-|:-|:-|:-|:-|:-|:-|:-|:-|
+|1|command|postpone|1.列出了常用的命令<br>2.并未对所有命令进行系统的归纳|1.对现有的命令进行补充、整理
+# `python`
+|序号|文件夹或文件名|状态|简述|下一步计划|当前时间|下一步计划完成时间|总计划|总完成时间
+|:-|:-|:-|:-|:-|:-|:-|:-|:-|
+1|flask|pause|flask线程安全源码阅读
+# 前端
+|序号|文件夹或文件名|状态|简述|下一步计划|当前时间|下一步计划完成时间|总计划|总完成时间
+|:-|:-|:-|:-|:-|:-|:-|:-|:-|
+1|react|postpone|1.react基本用法<br>2.hooks<br>3.redux|1.补充hooks\redux示例代码
+2|es6|postpone|1.迭代器语法概述<br>2.异步语法概述|1.补充示例
+3|d3|future|
+4|webpack|future
+5|babel|future
+6|npm|future
+# 并发
+|序号|文件夹或文件名|状态|简述|下一步计划|当前时间|下一步计划完成时间|总计划|总完成时间
+|:-|:-|:-|:-|:-|:-|:-|:-|:-|
+1|nio|supplement|整理了有关缓冲区、通道、selector、socket相关知识|实践
+2|netty|future
+# 数据库
+|序号|文件夹或文件名|状态|简述|下一步计划|当前时间|下一步计划完成时间|总计划|总完成时间
+|:-|:-|:-|:-|:-|:-|:-|:-|:-|
+1|redis|pause|完成大部分常用命令整理
+# 书
+|序号|文件夹或文件名|状态|简述|下一步计划|当前时间|下一步计划完成时间|总计划|总完成时间
+|:-|:-|:-|:-|:-|:-|:-|:-|:-|
+1|MySQL技术内幕|in progress|第二章补充完成|2020年9月18日|2020年9月18日|
+2|高性能MySQL|future|
+# 项目学习
+|序号|文件夹或文件名|状态|简述|下一步计划|当前时间|下一步计划完成时间|总计划|总完成时间
+|:-|:-|:-|:-|:-|:-|:-|:-|:-|
+1|open-capacity-platform|pause
+2|superset|pause
+3|mall|pause
+4|gmall|in progress
