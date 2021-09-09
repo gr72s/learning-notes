@@ -21,7 +21,7 @@
 ## Option
 
 - -m|--message: 添加描述信息
-- -k|--keep-index: 不添加已add的文件
+- -k|--keep-index: 已add的文件仍然保留在修改记录中(git status)
 - -q|--quiet: 安静模式, 不输出日志信息
 - -u|--include-untracked: 添加未add的文件
 - -a|--all: 添加全部文件, 包含已add、未add、隐藏和清除被忽略的文件
