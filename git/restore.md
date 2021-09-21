@@ -6,6 +6,11 @@
 
 ## Usage
 
+- git restore <filename>: 恢复指定、未add的文件 
+- git restore -S <filename>: 恢复已add的文件
+- git restore -s=<tree> <filename>: 恢复提交
+- git restore -m <filename>: 恢复merge后的文件
+
 ## Option
 
 - -s|--source=<tree>: 指定一个commit、branch或tag. 语法"commit_a...commit_c"可以回滚从commit_a到commit_c的提交
