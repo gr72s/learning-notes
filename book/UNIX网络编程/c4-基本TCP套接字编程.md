@@ -1,6 +1,8 @@
-# TCP 客户/服务端交互
+# 套接字函数
 
-# 句柄
+![](img/TCP客户端服务端程序的套接字函数.png)
+
+## 句柄
 
 - 监听套接字(listening socket)句柄
 - 已连接套接字(connected socket)句柄
@@ -11,23 +13,21 @@
     - 监听套接字: `int socket(int family, int type, int protocol)`
     - 已连接套接字: `int accept(int sockfd, struct sockaddr *cliaddr, socklen_t *addrlen)`
 
-# socket
+## socket
 
-```c
-<sys/socket.h>
-int socket(int family, int type, int protocol)
-```
+- family. 协议簇
 
-- 功能
-  - 服务端/客户端都需要使用此函数创建一个监听套接字句柄
-- 签名
-  - family: 协议簇. AF 或 PF 开头的值, 建议使用 AF 开头的值
-  - type: 套接字类型
-  - protocol: 协议类型
-- 返回值: 成功时返回套接字句柄, 非负数
-- type(套接字类型)的取值
+| family 取值 |    说明     |
+| :---------: | :---------: |
+|   AF_INET   |  IPV4 协议  |
+|  AF_INET6   |  IPV6 协议  |
+|  AF_LOCAL   | UNIX 域协议 |
+|  AF_ROUTE   | 路由套接字  |
+|   AF_KEY    | 密钥套接字  |
 
-|      type      |      说明      |
+- type. 套接字类型
+
+|   type 取值    |      说明      |
 | :------------: | :------------: |
 |  SOCK_STREAM   |     字节流     |
 |   SOCK_DGRAM   |     数据报     |
@@ -35,36 +35,33 @@ int socket(int family, int type, int protocol)
 |    SOCK_RDM    |                |
 | SOCK_SEQPACKET | 有序分组套接字 |
 
-- protocol(协议类型)的取值
+- protocol. 协议类型
 
-|   protocol   |     说明      |
-| :----------: | :-----------: |
-|   IPPROTO    | TCP 传输协议  |
-| IPPROTO_UDP  | UDP 传输协议  |
-| IPPROTO_SCTP | SCTP 传输协议 |
+| protocol 取值 |     说明      |
+| :-----------: | :-----------: |
+|    IPPROTO    | TCP 传输协议  |
+|  IPPROTO_UDP  | UDP 传输协议  |
+| IPPROTO_SCTP  | SCTP 传输协议 |
 
 - [ ] SOCK_RDM 的作用
 - [ ] 套接字类型在使用上的区别
 
-# connect
+## connect/listen/accept
 
-```c
-<sys/socket.h>
-int connect(int sockfd, const struct sockaddr *servaddr, socklen_t addrlen)
-```
+- [ ] connect/listen 前使不使用 bind 的区别
+- [ ] connect 异常情况
+- [ ] backlog 的作用
 
-- 功能: 客户端使用此方法与服务端建立连接
-- 签名
-  - sockfd传入的是`socket(..)`的返回值
-- 返回值
-  - 成功返回0
+## bind
 
-- [ ] connect的异常情况
+- [ ] 指定或不指定地址/端口的区别
 
+## close
 
-# bind
+- [ ] 用法
 
-```c
-<sys/socket.h>
-int bind(int sockfd, const struct *myaddr, socklen_t addrlen)
-```
+## getsockname()/getpeername()
+
+## 示例代码-时间服务器
+
+# UNIX 多进程函数
