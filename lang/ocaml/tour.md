@@ -1,3 +1,6 @@
+- [ ] 尾递归
+- [ ] List 模块
+
 # 逗号和分号
 
 - 使用逗号分隔变量会被解释为元组
@@ -25,12 +28,55 @@
 - 定义函数
   - 显式定义参数列表: `let fun-name param-list = ...`
   - 隐式定义参数列表: `let fun-name = function ...`
+  - 匿名函数: `(fun param-list -> fun-body.. )`
 - 函数签名
   - 参数列表使用 -> 连接, 最后一个参数是函数的返回值, `=<fun>`标识这是一个函数
     ```ocaml
     let square x = x * x;;
     val square : int -> int = <fun>
     ```
+- 偏函数
+
+  - 使用`let`绑定一个未完全传参的函数
+    ```ocaml
+    let colon_concat = concat ~sep:":"
+    ```
+  - 使用偏函数时, 如果可选参数定义在普通参数前的话, 可选参数会被擦除; 如果把可选参数定义在最后, 编译器会警告可选参数不会被擦除
+
+- 标签参数
+
+  - 声明: `val split : string -> on:char -> string list`
+  - 使用
+
+    ```ocaml
+    String.split ~on:';' "a:b"
+
+    let on = ':'
+    String.split ~on "a:b"
+    ```
+
+    - 传参: `~标签名:参数名`
+    - 变量名和标签名重复时可以省略标签名后的参数名
+
+- 可选参数与默认参数
+
+  - 声明: `?`加标签名是可选参数, `=""`是默认参数, `val concat : ?(sep:string="") -> string list -> string`
+  - 使用
+    - 不使用可选参数的话, 传参时忽略即可
+    - 使用可选参数的方法与标签参数一致, `String.concat ~sep:":" ...`
+    - 想要给可选参数传递 Some 时, 语法稍有不同. `String.concat ?sep:(Some ":")`. 当不传入 Some 时, 可选参数默认为 None, 等价为`?sep:None`
+
+- 操作符重定义
+
+  ```ocaml
+  let (+) x y = ...
+
+  2 + 1;;
+  ```
+
+- 操作符自定义
+  - 自定义的操作符必须以以下字符开头: `% & * + - . / : < = > ? @ ^ |`, 不能以`~ ! $`开头(本书第一版未提到这个)
+  - 自定义操作符的优先级、结合性由开头的字符决定
 
 # 泛型
 
