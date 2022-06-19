@@ -103,6 +103,60 @@
 
 - 使用`.(index)`索引数据, 使用`<-`赋值
 
+# module
+
+- main(): ocaml 中没有明确的 main 方法, 一般用`let ()`代替, 它表示捕获了一个没有返回值的函数
+- 同其它语言一样, 模块及模块中的定义有作用域的概念
+
+## 模块声明
+
+- 语法
+  ```ocaml
+  (* 同时声明sig和struct的写法 *)
+  module <name>: sig <signature> end = struct <implementation> end
+  (* 分开声明的写法 *)
+  (* sig *)
+  module type <type-name> = sig <signature> end
+  (* struct *)
+  module <struct-name> = struct <implementation> end
+  ```
+  - name: 模块名称
+  - signature: 签名. 有点像 c 里的.h 文件, 可以是纯声明, 也可以有实现
+  - implementation: 对 signature 的实现
+
+## 使用模块
+
+- 文件顶部导入: `open Base`
+- `let`绑定导入: `let open Base in`
+  - 局部导入: `let module b = Base in`
+- 直接引用: `Int64.((x + y) / if_int 2)`
+
+## ml/mli
+
+- ml 像是 c 里的源文件(.c), mli 像是 c 里的头文件(.h)
+- Counter 例子中使用 ml/mli 组织模块的时候, 提到了封装模块内部的实现, 我理解的这种操作是:
+  - 使用自定义的类型替代基础类型或者三方库中的类型, 比如`type t = string`
+  - 有点像 c 中会使用 typedef 或者宏创建自己的业务类型
+
+## open/include
+
+- open 用于打开模块
+- include 有点像是继承, 比如它可以扩展一个现有的模块
+
+  ```ocaml
+  (* ml *)
+  let apply = function...
+  include Option
+
+  (* mli *)
+  include module type of Option
+  val apply: ...
+  ```
+
+  - ml 文件中定义了扩展的方法, 最后使用`include Option表示包含了Option模块的所有方法`
+  - mli 文件中将 Option 类型作为此模块的类型
+  - 学习<<realworldocaml>>中扩展 Option 的例子时, 使用自定义文件导入扩展的 ml 模块时, vscode 报错找不到模块的 cmi 文件. 查[资料](https://www2.ocaml.org/learn/tutorials/filenames.html)发现 cmi 是 mli 的中间文件, 需要用 ocamlc 编译
+
 # record、mutable 和 ref
 
 - record 与 rust 中的 struct 比较类似, 区别是 ocaml 是使用 type 关键字声明的
@@ -116,6 +170,8 @@
 
 # compile
 
+## dune
+
 - 使用 dune 组织、编译工程
 - 每个工程使用有一个 dune-project, 可以有多个 dune 用于区分子目录
 - 引入三方包: 在 dune 的 libraries 中声明
@@ -126,3 +182,12 @@
    (libraries base stdio))
   ```
 - 编译&执行: dune build main
+
+## ocamlfind
+
+- 是一个调用其它 ocaml 工具链的工具: `ocamlfine ocamlopt -linkpkg -package base main.ml`
+
+## ocamlopt/ocamlc
+
+- ocamlopt: 本机代码编译器
+- ocamlc: 字节码编译器
