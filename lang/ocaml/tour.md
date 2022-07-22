@@ -1,3 +1,25 @@
+- [逗号和分号](#逗号和分号)
+- [变量、函数](#变量函数)
+  - [变量](#变量)
+  - [函数](#函数)
+- [泛型](#泛型)
+- [数据结构](#数据结构)
+- [array](#array)
+- [module](#module)
+  - [模块声明](#模块声明)
+  - [使用模块](#使用模块)
+  - [ml/mli](#mlmli)
+  - [open/include](#openinclude)
+- [record、mutable 和 ref](#recordmutable-和-ref)
+- [error/exception](#errorexception)
+  - [error](#error)
+  - [exception](#exception)
+- [compile](#compile)
+
+  - [dune](#dune)
+  - [ocamlfind](#ocamlfind)
+  - [ocamlopt/ocamlc](#ocamloptocamlc)
+
 - [ ] 尾递归
 - [ ] List 模块
 
@@ -167,6 +189,12 @@
   var1 := 1
   ```
 - 通过 ref 了解到 ocaml 可以重载运算符
+
+# error/exception
+
+## error
+
+## exception
 
 # compile
 
